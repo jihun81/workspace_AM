@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true"
+        android:state_enabled="true" > <!-- pressed -->
+        <shape xmlns:android="http://schemas.android.com/apk/res/android" >
+            <solid android:color="@color/default_bottom_sheet_item_background_pressed_color" />
+        </shape>
+    </item>
+    <item android:state_focused="true"
+        android:state_enabled="true" > <!-- focused -->
+        <shape xmlns:android="http://schemas.android.com/apk/res/android" >
+            <solid android:color="@color/default_bottom_sheet_item_background_pressed_color" />
+        </shape>
+    </item>
+    <item android:state_enabled="false" > <!-- disabled -->
+        <shape xmlns:android="http://schemas.android.com/apk/res/android" >
+            <solid android:color="@color/default_bottom_sheet_item_background_normal_color" />
+        </shape>
+    </item>
+    <item> <!-- default -->
+        <shape xmlns:android="http://schemas.android.com/apk/res/android" >
+            <solid android:color="@color/default_bottom_sheet_item_background_normal_color" />
+        </shape>
+    </item>
+</selector>

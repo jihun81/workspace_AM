@@ -1,0 +1,53 @@
+stages:
+    - build
+    - deploy
+
+before_script:
+    - chmod +x gradlew
+
+build-debug:
+    stage: build
+    environment: staging
+    script:
+        - ./gradlew assembleDebug --stacktrace
+        - cd app/build/outputs/apk/debug/
+        - export SCP_SERVER_PATH="$SCP_DEVELOP_SERVER_PATH"
+        - scp * $SCP_SERVER_PATH
+    tags:
+        - Android
+    except:
+        - master
+
+build-release:
+    stage: build
+    environment: production
+    script:
+        - ./gradlew --stacktrace clean assembleRelease -Pandroid.injected.signing.store.file=`pwd -P`/app/KeyStore_KnowledgeWorker.jks -Pandroid.injected.signing.store.password=$KEYSTORE_PWD -Pandroid.injected.signing.key.alias=$KEYSTORE_ALIAS_NAME -Pandroid.injected.signing.key.password=$KEYSTORE_PWD
+        - cd app/build/outputs/apk/release/
+        - export SCP_SERVER_PATH_1="$PRODUCT_SERVER_1_IP"
+        - scp -v * $SCP_SERVER_PATH_1
+        - export SCP_SERVER_PATH_2="$PRODUCT_SERVER_2_IP"
+        - scp -v * $SCP_SERVER_PATH_2
+    tags:
+        - Android
+    only:
+        - master
+
+deploy:
+    stage: deploy
+    only:
+        - branches
+        - tags
+    script:
+        - echo "Updating app '${WEBLOGIC_APP_NAME}'..."
+        - STATUS=$(curl -v --insecure --user ${WEBLOGIC_SERVER_USER}:${WEBLOGIC_SERVER_PASSWORD} -H X-Requested-By:GitlabRunner -H Accept:application/json -X POST "${WEBLOGIC_SERVER_URL_1}/management/wls/latest/deployments/application/id/${WEBLOGIC_APP_NAME}/redeploy" || true | grep "status" | head -1)
+        - echo "Status = ${STATUS}"
+        - SUCCEED=$(echo ${STATUS} | grep "initialized" || true)
+        - if [ ! -z "${SUCCEED}" ]; then echo "Server is in editing mode... making it activated..." && curl -v -f -s -S --insecure --user ${WEBLOGIC_SERVER_USER}:${WEBLOGIC_SERVER_PASSWORD} -H X-Requested-By:GitlabRunner -H Accept:application/json -X POST "${WEBLOGIC_SERVER_URL_1}/management/wls/latest/changeManager/activate"; fi
+        - STATUS=$(curl -v --insecure --user ${WEBLOGIC_SERVER_USER}:${WEBLOGIC_SERVER_PASSWORD} -H X-Requested-By:GitlabRunner -H Accept:application/json -X POST "${WEBLOGIC_SERVER_URL_2}/management/wls/latest/deployments/application/id/${WEBLOGIC_APP_NAME}/redeploy" || true | grep "status" | head -1)
+        - echo "Status = ${STATUS}"
+        - SUCCEED=$(echo ${STATUS} | grep "initialized" || true)
+        - if [ ! -z "${SUCCEED}" ]; then echo "Server is in editing mode... making it activated..." && curl -v -f -s -S --insecure --user ${WEBLOGIC_SERVER_USER}:${WEBLOGIC_SERVER_PASSWORD} -H X-Requested-By:GitlabRunner -H Accept:application/json -X POST "${WEBLOGIC_SERVER_URL_2}/management/wls/latest/changeManager/activate"; fi
+        - echo "Deployment done."
+    tags:
+        - Android

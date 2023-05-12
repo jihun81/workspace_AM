@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/schedule_detail_root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true" >
+    <RelativeLayout
+        android:id="@+id/schedule_detail_header_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/schedule_top_bar_layout_height"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:paddingLeft="@dimen/schedule_top_bar_left_right_margin"
+        android:paddingRight="@dimen/schedule_top_bar_left_right_margin"
+        android:background="@color/color_bg_schedule_top_bar" >
+        <ImageButton
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:id="@+id/schedule_detail_back_button"
+            android:layout_width="@dimen/schedule_top_bar_back_button_size"
+            android:layout_height="@dimen/schedule_top_bar_back_button_size"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:src="@drawable/ic_back_schedule_top_bar" />
+        <TextView
+            android:id="@+id/schedule_detail_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/schedule_top_bar_title_text_size"
+            android:textColor="@android:color/white"
+            android:text="@string/schedule_detail_add_title" />
+    </RelativeLayout>
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/schedule_detail_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/schedule_detail_header_layout"
+        android:scrollbars="vertical"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:background="@android:color/white" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/schedule_detail_contents_left_right_margin"
+            android:paddingRight="@dimen/schedule_detail_contents_left_right_margin"
+            android:orientation="vertical" >
+            <TextView
+                android:id="@+id/schedule_detail_work_start_date_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/schedule_detail_content_top_margin"
+                android:layout_marginBottom="@dimen/schedule_detail_content_desc_bottom_margin"
+                android:textSize="@dimen/schedule_detail_content_desc_text_size"
+                android:textColor="@color/color_text_schedule_detail_contents_desc"
+                android:text="@string/schedule_detail_work_start_date" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/schedule_detail_content_selector_layout_height"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+                <RelativeLayout
+                    android:id="@+id/schedule_detail_work_start_date_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:background="@drawable/bg_schedule_detail_selector" >
+                    <TextView
+                        android:id="@+id/schedule_detail_work_start_date_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:textSize="@dimen/schedule_detail_content_title_text_size"
+                        android:textColor="@color/color_text_schedule_detail_contents_title" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="@dimen/schedule_detail_content_selector_arrow_left_right_margin"
+                        android:layout_marginEnd="@dimen/schedule_detail_content_selector_arrow_left_right_margin"
+                        android:duplicateParentState="true"
+                        android:background="@null"
+                        android:src="@drawable/ic_schedule_detail_selector_arrow" />
+                </RelativeLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="21dp"
+                    android:layout_marginEnd="21dp"
+                    android:visibility="invisible"
+                    android:textSize="@dimen/schedule_detail_content_title_text_size"
+                    android:textColor="@color/color_text_schedule_detail_contents_desc"
+                    android:text="~" />
+                <RelativeLayout
+                    android:id="@+id/schedule_detail_work_start_time_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:background="@drawable/bg_schedule_detail_selector" >
+                    <TextView
+                        android:id="@+id/schedule_detail_work_start_time_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:textSize="@dimen/schedule_detail_content_title_text_size"
+                        android:textColor="@color/color_text_schedule_detail_contents_title" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="@dimen/schedule_detail_content_selector_arrow_left_right_margin"
+                        android:layout_marginEnd="@dimen/schedule_detail_content_selector_arrow_left_right_margin"
+                        android:duplicateParentState="true"
+                        android:background="@null"
+                        android:src="@drawable/ic_schedule_detail_selector_arrow" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/schedule_detail_work_end_date_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/schedule_detail_contents_between_margin"
+                android:layout_marginBottom="@dimen/schedule_detail_content_desc_bottom_margin"
+                android:textSize="@dimen/schedule_detail_content_desc_text_size"
+                android:textColor="@color/color_text_schedule_detail_contents_desc"
+                android:text="@string/schedule_detail_work_end_date" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/schedule_detail_content_selector_layout_height"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+                <RelativeLayout
+                    android:id="@+id/schedule_detail_work_end_date_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:background="@drawable/bg_schedule_detail_selector" >
+                    <TextView
+                        android:id="@+id/schedule_detail_work_end_date_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:textSize="@dimen/schedule_detail_content_title_text_size"
+                        android:textColor="@color/color_text_schedule_detail_contents_title" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="@dimen/schedule_detail_content_selector_arrow_left_right_margin"
+                        android:layout_marginEnd="@dimen/schedule_detail_content_selector_arrow_left_right_margin"
+                        android:duplicateParentState="true"
+                        android:background="@null"
+                        android:src="@drawable/ic_schedule_detail_selector_arrow" />
+                </RelativeLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="21dp"
+                    android:layout_marginEnd="21dp"
+                    android:visibility="invisible"
+                    android:textSize="@dimen/schedule_detail_content_title_text_size"
+                    android:textColor="@color/color_text_schedule_detail_contents_desc"
+                    android:text="~" />
+                <RelativeLayout
+                    android:id="@+id/schedule_detail_work_end_time_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:background="@drawable/bg_schedule_detail_selector" >
+
+                    <TextView
+                        android:id="@+id/schedule_detail_work_end_time_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:textSize="@dimen/schedule_detail_content_title_text_size"
+                        android:textColor="@color/color_text_schedule_detail_contents_title" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="@dimen/schedule_detail_content_selector_arrow_left_right_margin"
+                        android:layout_marginEnd="@dimen/schedule_detail_content_selector_arrow_left_right_margin"
+                        android:duplicateParentState="true"
+                        android:background="@null"
+                        android:src="@drawable/ic_schedule_detail_selector_arrow" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/schedule_detail_task_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/schedule_detail_contents_between_margin"
+                android:layout_marginBottom="@dimen/schedule_detail_content_desc_bottom_margin"
+                android:textSize="@dimen/schedule_detail_content_desc_text_size"
+                android:textColor="@color/color_text_schedule_detail_contents_desc"
+                android:text="@string/schedule_detail_task" />
+
+            <RelativeLayout
+                android:id="@+id/schedule_detail_task_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/schedule_detail_content_selector_layout_height"
+                android:background="@drawable/bg_schedule_detail_selector"
+                android:clickable="true" >
+                <TextView
+                    android:id="@+id/schedule_detail_task_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:textSize="@dimen/schedule_detail_content_title_text_size"
+                    android:textColor="@color/color_text_schedule_detail_contents_title" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="@dimen/schedule_detail_content_selector_arrow_left_right_margin"
+                    android:layout_marginEnd="@dimen/schedule_detail_content_selector_arrow_left_right_margin"
+                    android:duplicateParentState="true"
+                    android:background="@null"
+                    android:src="@drawable/ic_schedule_detail_selector_arrow" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/schedule_detail_work_type_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/schedule_detail_contents_between_margin"
+                android:layout_marginBottom="@dimen/schedule_detail_content_desc_bottom_margin"
+                android:textSize="@dimen/schedule_detail_content_desc_text_size"
+                android:textColor="@color/color_text_schedule_detail_contents_desc"
+                android:text="@string/schedule_detail_work_type" />
+
+            <RelativeLayout
+                android:id="@+id/schedule_detail_work_type_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/schedule_detail_content_selector_layout_height"
+                android:background="@drawable/bg_schedule_detail_selector"
+                android:clickable="true" >
+                <TextView
+                    android:id="@+id/schedule_detail_work_type_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:textSize="@dimen/schedule_detail_content_title_text_size"
+                    android:textColor="@color/color_text_schedule_detail_contents_title" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="@dimen/schedule_detail_content_selector_arrow_left_right_margin"
+                    android:layout_marginEnd="@dimen/schedule_detail_content_selector_arrow_left_right_margin"
+                    android:duplicateParentState="true"
+                    android:background="@null"
+                    android:src="@drawable/ic_schedule_detail_selector_arrow" />
+            </RelativeLayout>
+
+            <!--
+            <TextView
+                android:id="@+id/schedule_detail_work_detail_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/schedule_detail_contents_between_margin"
+                android:layout_marginBottom="@dimen/schedule_detail_content_desc_bottom_margin"
+                android:textSize="@dimen/schedule_detail_content_desc_text_size"
+                android:textColor="@color/color_text_schedule_detail_contents_desc"
+                android:text="@string/schedule_detail_work_detail" />
+
+            <EditText
+                android:id="@+id/schedule_detail_work_detail_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="3"
+                android:scrollbars="vertical"
+                android:background="@null"
+                android:hint="@string/schedule_detail_work_detail_hint"
+                android:textColorHint="@color/color_text_hint_schedule_detail_work_detail"
+                android:textSize="@dimen/schedule_detail_content_title_text_size"
+                android:textColor="@color/color_text_schedule_detail_contents_title" />
+            -->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/schedule_detail_work_detail_text_input_layout"
+                app:hintTextAppearance="@style/ScheduleDetailTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/schedule_detail_contents_between_margin" >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/schedule_detail_work_detail_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/schedule_detail_content_desc_bottom_margin"
+                    android:maxLines="3"
+                    android:scrollbars="vertical"
+                    android:background="@null"
+                    android:textSize="@dimen/schedule_detail_content_title_text_size"
+                    android:textColor="@color/color_text_schedule_detail_contents_title"
+                    android:textColorHint="@color/color_text_hint_schedule_detail_work_detail"
+                    android:hint="@string/schedule_detail_work_detail_hint" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/schedule_detail_comment_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/schedule_detail_contents_between_margin"
+                android:layout_marginBottom="@dimen/schedule_detail_content_desc_bottom_margin"
+                android:textSize="@dimen/schedule_detail_content_desc_text_size"
+                android:textColor="@color/color_text_schedule_detail_contents_desc"
+                android:text="@string/schedule_detail_comment" />
+
+            <TextView
+                android:id="@+id/schedule_detail_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical"
+                android:maxLines="3"
+                android:textSize="@dimen/schedule_detail_content_title_text_size"
+                android:textColor="@color/color_text_schedule_detail_comment" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/schedule_detail_content_buttons_height"
+                android:layout_marginTop="@dimen/schedule_detail_content_buttons_top_margin"
+                android:layout_marginBottom="@dimen/schedule_detail_content_buttons_bottom_margin"
+                android:orientation="horizontal" >
+                <Button
+                    style="@style/AMButton.BorderlessButton"
+                    android:id="@+id/schedule_detail_delete_button"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="@dimen/schedule_detail_content_buttons_between_margin"
+                    android:background="@drawable/bg_schedule_detail_delete_button"
+                    android:textColor="@color/textcolor_schedule_detail_delete_button"
+                    android:textSize="@dimen/schedule_detail_content_buttons_text_size" />
+                <Button
+                    style="@style/AMButton.BorderlessButton"
+                    android:id="@+id/schedule_detail_save_button"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/schedule_detail_content_buttons_between_margin"
+                    android:background="@drawable/bg_schedule_detail_save_button"
+                    android:textColor="@color/textcolor_schedule_detail_save_button"
+                    android:textSize="@dimen/schedule_detail_content_buttons_text_size"
+                    android:text="@string/save" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</RelativeLayout>

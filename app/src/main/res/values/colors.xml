@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#8DC63F</color>
+    <color name="colorPrimaryDark">#808DC63F</color>
+    <color name="colorAccent">#8DC63F</color>
+
+    <color name="black">#333333</color>
+
+    <!-- LOGIN -->
+    <color name="color_bg_login_login_button_pressed">#3F51B5</color>
+    <color name="color_bg_login_login_button_disabled">#E5E5E5</color>
+    <color name="color_bg_login_login_button_normal">#FFC107</color>
+
+    <color name="color_text_login_login_button_pressed">#FFFFFF</color>
+    <color name="color_text_login_login_button_disabled">#B2B2B2</color>
+    <color name="color_text_login_login_button_normal">#FFFFFF</color>
+
+    <color name="color_text_login_edittext">@color/black</color>
+    <color name="color_light_hint_text_login_edittext">#B2B2B2</color>
+    <color name="color_dark_hint_text_login_edittext">#7D7D7D</color>
+
+    <color name="color_edittext_bottom_line_not_focused">#F2F2F2</color>
+
+
+    <!-- Main -->
+    <color name="color_bg_main">#8DC63F</color>
+    <color name="color_text_main_contents_user_info_name">@color/black</color>
+    <color name="color_text_main_contents_user_info_part">#7D7D7D</color>
+    <color name="color_text_main_contents_user_info_logout_normal">#B2B2B2</color>
+    <color name="color_text_main_contents_user_info_logout_pressed">#7D7D7D</color>
+    <color name="color_text_main_contents_user_info_logout_disabled">#B2B2B2</color>
+
+    <color name="color_bg_main_contents_date_info">#F7F7F7</color>
+    <color name="color_text_main_contents_date_info">#333333</color>
+    <color name="color_text_main_contents_work_info_message">#1F4620</color>
+    <color name="color_bg_main_contents_work_info_alert">#F7F7F7</color>
+    <color name="color_text_main_contents_work_info_alert">#7D7D7D</color>
+
+
+    <!-- Schedule -->
+    <color name="color_bg_schedule_top_bar">#8DC63F</color>
+
+    <color name="color_text_schedule_list_header_date">@color/black</color>
+
+    <color name="color_text_schedule_list_header_add_button_pressed">#FFFFFF</color>
+    <color name="color_text_schedule_list_header_add_button_disabled">#FFFFFF</color>
+    <color name="color_text_schedule_list_header_add_button_normal">#FFFFFF</color>
+
+    <color name="shedule_list_add_btn_pressed_border">#FFFFFF</color>
+    <color name="shedule_list_add_btn_normal_border">#FFFFFF</color>
+
+    <color name="color_text_schedule_list_empty_title">#7D7D7D</color>
+    <color name="color_text_schedule_list_empty_desc">#999999</color>
+
+    <color name="color_bg_schedule_list_item_pressed">#F2F2F2</color>
+    <color name="color_bg_schedule_list_item_normal">#FFFFFF</color>
+
+    <color name="color_text_schedule_list_item">#7D7D7D</color>
+
+
+    <color name="color_text_schedule_detail_contents_desc">#999999</color>
+    <color name="color_text_schedule_detail_contents_title">@color/black</color>
+    <color name="color_schedule_detail_selector_underline_normal">#F2F2F2</color>
+    <color name="color_schedule_detail_selector_underline_pressed">#8DC63F</color>
+
+    <color name="color_text_schedule_detail_comment">#7AAC35</color>
+
+    <color name="color_bg_schedule_detail_delete_button_pressed">#E5E5E5</color>
+    <color name="color_bg_schedule_detail_delete_button_normal">#E5E5E5</color>
+    <color name="color_bg_schedule_detail_save_button_pressed">#8DC63F</color>
+    <color name="color_bg_schedule_detail_save_button_normal">#8DC63F</color>
+
+    <color name="color_text_hint_schedule_detail_work_detail">#E0E0E0</color>
+
+    <color name="color_text_schedule_detail_delete_button_pressed">#7E7E7E</color>
+    <color name="color_text_schedule_detail_delete_button_normal">#7E7E7E</color>
+    <color name="color_text_schedule_detail_save_button_pressed">#FFFFFF</color>
+    <color name="color_text_schedule_detail_save_button_normal">#FFFFFF</color>
+
+
+    <color name="default_bottom_sheet_item_text_color">@color/black</color>
+    <color name="default_bottom_sheet_item_background_normal_color">@android:color/white</color>
+    <color name="default_bottom_sheet_item_background_pressed_color">#F9F9F9</color>
+    <color name="default_bottom_sheet_cancel_button_top_border">#E0E0E0</color>
+</resources>

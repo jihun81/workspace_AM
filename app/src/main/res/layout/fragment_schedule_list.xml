@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true" >
+    <RelativeLayout
+        android:id="@+id/schedule_list_top_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/schedule_top_bar_layout_height"
+        android:paddingLeft="@dimen/schedule_top_bar_left_right_margin"
+        android:paddingRight="@dimen/schedule_top_bar_left_right_margin"
+        android:background="@color/color_bg_schedule_top_bar" >
+        <ImageButton
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:id="@+id/schedule_list_back_button"
+            android:layout_width="@dimen/schedule_top_bar_back_button_size"
+            android:layout_height="@dimen/schedule_top_bar_back_button_size"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:src="@drawable/ic_back_schedule_top_bar" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/schedule_top_bar_title_text_size"
+            android:textColor="@android:color/white"
+            android:text="@string/schedule_list_title" />
+        <Button
+            android:id="@+id/schedule_list_top_bar_add_button"
+            style="@style/AMButton.BorderlessButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:paddingLeft="@dimen/schedule_list_header_add_btn_text_left_right_margin"
+            android:paddingRight="@dimen/schedule_list_header_add_btn_text_left_right_margin"
+            android:paddingTop="@dimen/schedule_list_header_add_btn_text_top_bottom_margin"
+            android:paddingBottom="@dimen/schedule_list_header_add_btn_text_top_bottom_margin"
+            android:layout_marginEnd="@dimen/schedule_list_header_add_btn_right_margin"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:background="@drawable/bg_schedule_list_add_btn"
+            android:textColor="@color/textcolor_schedule_list_add_button"
+            android:textSize="@dimen/schedule_list_header_add_btn_text_size"
+            android:text="@string/schedule_list_header_add" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:layout_below="@id/schedule_list_top_bar_layout"
+        android:orientation="vertical" >
+        <RelativeLayout
+            android:id="@+id/schedule_list_header_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/schedule_list_header_layout_height" >
+            <TextView
+                android:id="@+id/schedule_list_header_date_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="14dp"
+                android:layout_marginEnd="14dp"
+                android:gravity="center"
+                android:textColor="@color/color_text_schedule_list_header_date"
+                android:textSize="@dimen/schedule_list_header_date_text_size" />
+            <ImageButton
+                android:id="@+id/schedule_list_header_left_arrow"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/schedule_list_header_date_textview"
+                android:layout_centerVertical="true"
+                android:minWidth="20dp"
+                android:minHeight="20dp"
+                android:padding="10dp"
+                android:background="@null"
+                android:src="@drawable/ic_schedule_list_header_prev" />
+            <ImageButton
+                android:id="@+id/schedule_list_header_right_arrow"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/schedule_list_header_date_textview"
+                android:layout_centerVertical="true"
+                android:minWidth="20dp"
+                android:minHeight="20dp"
+                android:padding="10dp"
+                android:background="@null"
+                android:src="@drawable/ic_schedule_list_header_next" />
+        </RelativeLayout>
+        <View
+            android:id="@+id/schedule_list_recyclerview_top_divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#D8D8D8" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/schedule_list_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#F2F2F2"
+            android:visibility="gone" />
+        <LinearLayout
+            android:id="@+id/schedule_list_empty_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#F7F7F7"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone" >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/img_noticie" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/schedule_list_empty_title_top_margin"
+                android:layout_marginBottom="@dimen/schedule_list_empty_title_bottom_margin"
+                android:lineSpacingExtra="0dp"
+                android:textSize="@dimen/schedule_list_empty_title_text_size"
+                android:textColor="@color/color_text_schedule_list_empty_title"
+                android:text="@string/schedule_list_empty_title" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="0dp"
+                android:textSize="@dimen/schedule_list_empty_desc_text_size"
+                android:textColor="@color/color_text_schedule_list_empty_desc"
+                android:text="@string/schedule_list_empty_desc" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

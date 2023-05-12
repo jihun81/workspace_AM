@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">출퇴체크</string>
+
+    <string name="cancel">취소</string>
+    <string name="delete">삭제</string>
+    <string name="save">저장</string>
+
+    <string name="exit_popup_message">앱을 종료하시겠습니까?</string>
+    <string name="update_popup_message">앱 업데이트가 가능합니다.\n업데이트 하시겠습니까?</string>
+    <string name="error_message_default_network_error">네트워크 오류입니다. 잠시후에 접속하시기 바랍니다.</string>
+
+    <string name="login_id_edt_hint_not_focused">아이디(사번)를 입력하세요.</string>
+    <string name="login_id_edt_hint_focused">아이디</string>
+
+    <string name="login_pwd_edt_hint_not_focused">비밀번호를 입력하세요.</string>
+    <string name="login_pwd_edt_hint_focused">비밀번호</string>
+
+    <string name="login_login_btn_text">로그인</string>
+
+    <string name="main_user_info_contents_logout">로그아웃 ＞</string>
+
+    <string name="main_on_work_message">오늘도 힘내세요!</string>
+    <string name="main_off_work_message">오늘도 수고하셨습니다!</string>
+
+    <string name="main_on_work_success_message">출근되었습니다.</string>
+    <string name="main_off_work_success_message">퇴근되었습니다.</string>
+
+    <string name="main_on_work_alert_message">위치 정보가 꺼져있어 출근 시간만 확인 됩니다!</string>
+    <string name="main_off_work_alert_message">위치 정보가 꺼져있어 퇴근 시간만 확인 됩니다!</string>
+
+    <string name="schedule_list_title">내 일정 조회</string>
+    <string name="schedule_list_empty_title">조회내역이 없습니다.</string>
+    <string name="schedule_list_empty_desc">내 일정 등록에서 등록해주세요.</string>
+    <string name="schedule_list_header_add">추가</string>
+
+    <string name="schedule_detail_add_title">내 일정 등록</string>
+    <string name="schedule_detail_work_start_date">시작일시*</string>
+    <string name="schedule_detail_work_end_date">종료일시*</string>
+    <string name="schedule_detail_task">TASK*</string>
+    <string name="schedule_detail_work_type">업무유형*</string>
+    <string name="schedule_detail_work_detail">근무상세</string>
+    <string name="schedule_detail_comment">Comment</string>
+
+    <string name="schedule_detail_work_detail_hint">근무상세를 입력하세요.</string>
+
+    <string name="schedule_detail_date_validation_message">시작일시가 종료일시보다 나중일수 없습니다.</string>
+    <string name="schedule_detail_input_start_date_validation_message">시작일시를 입력하세요.</string>
+    <string name="schedule_detail_input_end_date_validation_message">종료일시를 입력하세요.</string>
+    <string name="schedule_detail_input_start_time_validation_message">시작시간을 입력하세요.</string>
+    <string name="schedule_detail_input_end_time_validation_message">종료시간을 입력하세요.</string>
+    <string name="schedule_detail_input_task_validation_message">TASK 를 선택하세요.</string>
+    <string name="schedule_detail_input_work_detail_validation_message">업무유형을 선택하세요.</string>
+
+    <string name="schedule_delete_confirm_message">정말 삭제 하시겠습니까?</string>
+    <string name="schedule_save_confirm_message">저장 하시겠습니까?</string>
+    <string name="logout_confirm_message">로그아웃 하시겠습니까?</string>
+
+    <string name="schedule_save_complete_message">등록 되었습니다.</string>
+</resources>

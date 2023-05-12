@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical" >
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/default_bottom_sheet_menu_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_bottom_sheet_menu_list_top_bottom_padding"
+        android:layout_marginBottom="@dimen/default_bottom_sheet_menu_list_top_bottom_padding" />
+    <View
+        android:id="@+id/default_bottom_sheet_menu_cancel_top_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/default_bottom_sheet_menu_list_item_left_right_padding"
+        android:layout_marginRight="@dimen/default_bottom_sheet_menu_list_item_left_right_padding"
+        android:background="@color/default_bottom_sheet_cancel_button_top_border" />
+    <Button
+        style="@style/AMButton.BorderlessButton"
+        android:id="@+id/default_bottom_sheet_menu_cancel_button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_bottom_sheet_menu_list_item_layout_height"
+        android:background="@drawable/bg_bottomsheet_default_menu_list_item"
+        android:gravity="center"
+        android:textSize="@dimen/default_bottom_sheet_menu_cancel_button_text_size"
+        android:textColor="@color/color_text_schedule_detail_delete_button_normal"
+        android:text="@android:string/cancel" />
+</LinearLayout>
