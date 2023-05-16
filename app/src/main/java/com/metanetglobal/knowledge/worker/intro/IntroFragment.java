@@ -244,8 +244,10 @@ public class IntroFragment extends BaseFragment {
         if(getActivity() != null && !getActivity().isFinishing()) {
             Timber.tag(TAG).d("doAuthentication]"+getActivity()+"");
             if (UserInfoManager.isLogined(getActivity())) {
+                Timber.tag(TAG).d("doAuthentication2]"+getActivity()+"");
                 doAuthentication(0, "");
             } else {
+                Timber.tag(TAG).d("doAuthentication3]"+getActivity()+"");
                 goLogin();
             }
         }

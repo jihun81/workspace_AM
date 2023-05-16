@@ -9,7 +9,7 @@ import com.github.ajalt.timberkt.Timber;
 
 import java.util.LinkedList;
 
-import io.fabric.sdk.android.Fabric;
+//import io.fabric.sdk.android.Fabric;
 
 /**
  * Application Class of This App
@@ -31,7 +31,7 @@ public class AMApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        Fabric.with(this, new Crashlytics());
+        //Fabric.with(this, new Crashlytics());
         singleton = this;
 
         if(AMSettings.isDebugMode) {

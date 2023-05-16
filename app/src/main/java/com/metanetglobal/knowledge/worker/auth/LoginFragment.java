@@ -421,7 +421,9 @@ public class LoginFragment extends BaseFragment {
                             AMSettings.STARTTIME = responseDTO.getUserInfo().getWorkInTime()+"00"; //출근시간
 
                             PreferenceManager.setUserCode(getActivity(), responseDTO.getUserInfo().getEmpNo());//사원번호 추가
-                            Timber.tag(TAG).d("[doAuthentication][dd] " + responseDTO.getUserInfo().getEmpNo());
+
+                            PreferenceManager.getUserId(getContext()).length();
+                            Timber.tag(TAG).d("[doAuthentication][dd] " +  PreferenceManager.getUserId(getContext()).length());
 
                             goMain(userInfoString, workInOutListString);
                         } else {

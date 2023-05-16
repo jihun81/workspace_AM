@@ -8,7 +8,7 @@ buildscript {
     }
 }
 apply plugin: 'com.android.application'
-apply plugin: 'io.fabric'
+//apply plugin: 'io.fabric'
 
 android {
     compileSdkVersion 33
@@ -45,9 +45,9 @@ android {
 
 }
 
-repositories {
+/*repositories {
     maven { url 'https://maven.fabric.io/public' }
-}
+}*/
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])

@@ -274,7 +274,7 @@ public class MainFragment extends BaseFragment {
                     if(getActivity() != null) {
 
                         String srchString = PreferenceManager.getUserId(getActivity());
-                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://10.245.18.240:3000/worklist?id="+srchString));
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(AMSettings.APP_DOWN_URL +"worklist?id="+srchString));
                         startActivity(browserIntent);
 /*                        Intent intent = new Intent();
                         intent.setClass(getActivity(), ScheduleListActivity.class);
@@ -316,8 +316,8 @@ public class MainFragment extends BaseFragment {
                         setCanClickable();
 
                         WORK_MODE = WORK_MODE_IN;
-                        doCurrentLocation();
-                    //    addWorkInOut();
+                    //    doCurrentLocation();
+                        addWorkInOut();
                     }
                 }
             });
@@ -332,8 +332,8 @@ public class MainFragment extends BaseFragment {
                         setCanClickable();
 
                         WORK_MODE = WORK_MODE_OUT;
-                      //  addWorkInOut();
-                        doCurrentLocation();
+                        addWorkInOut();
+                      //  doCurrentLocation();
                     }
                 }
             });
@@ -359,6 +359,7 @@ public class MainFragment extends BaseFragment {
 
         setLayoutFromData();
 
+
         /**
          * Location 관련 Initialize
          */
@@ -374,6 +375,8 @@ public class MainFragment extends BaseFragment {
         super.onResume();
 
         Timber.tag(TAG).i("onResume");
+
+        //setLayoutFromData();
 
         /**
          * Resume 시 Location 정보를 가져오던 중이었는지 체크를 한다.
@@ -929,6 +932,8 @@ public class MainFragment extends BaseFragment {
         }
     }
 
+
+
     /**
      * LocationRequest 생성
      */
@@ -945,6 +950,8 @@ public class MainFragment extends BaseFragment {
      * Location Callback 생성
      */
     private void createLocationCallback() {
+
+
 
         mLocationCallback = new LocationCallback() {
             @Override
@@ -974,9 +981,7 @@ public class MainFragment extends BaseFragment {
                         initCurrentLocation();
                     }
 
-                    Timber.tag(TAG).d("[LocationCallback] current_lat3 : " + current_lat + " current_lon : " + current_lon + " current_address : " + current_address);
-
-                    addWorkInOut();
+                    //addWorkInOut();
 
                     // 한번만 위치 가져온다.
                     stopLocationUpdates();
@@ -1018,7 +1023,7 @@ public class MainFragment extends BaseFragment {
                 Timber.tag(TAG).e("[startLocationUpdates] PlayService is not usable~");
                 initCurrentLocation();
                 mRequestingLocationUpdates = false;
-                addWorkInOut();
+               // addWorkInOut();
 
                 return;
             }
@@ -1028,7 +1033,7 @@ public class MainFragment extends BaseFragment {
                 Timber.tag(TAG).e("[startLocationUpdates] GPS Provider is not usable");
                 initCurrentLocation();
                 mRequestingLocationUpdates = false;
-                addWorkInOut();
+             //   addWorkInOut();
             } else {
                 Timber.tag(TAG).d("[startLocationUpdates] Request Location Updates!!!");
                 showLoadingProgressBar();

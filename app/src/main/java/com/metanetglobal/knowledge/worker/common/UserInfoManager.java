@@ -2,6 +2,8 @@ package com.metanetglobal.knowledge.worker.common;
 
 import android.content.Context;
 
+import com.github.ajalt.timberkt.Timber;
+
 /**
  * User Info Manager
  *
@@ -18,6 +20,7 @@ public class UserInfoManager {
      * @return          Is Logined
      */
     public static boolean isLogined(Context context) {
+        Timber.tag("isLogined").d(PreferenceManager.getUserId(context).length()+"/"+PreferenceManager.getUserPwd(context));
         return PreferenceManager.getUserId(context).length() > 0 && PreferenceManager.getUserPwd(context).length() > 0;
     }
 }

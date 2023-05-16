@@ -45,6 +45,7 @@ public class MainActivity extends BaseActivity {
         // 앱 실행시 Background Service 실행
         Intent serviceintent = new Intent( MainActivity.this, MyService.class );
         startService( serviceintent );
+
         //stopService( serviceintent );
 
 
@@ -95,5 +96,7 @@ public class MainActivity extends BaseActivity {
             ((MainFragment) getCurrentFragment()).refreshUserInfo(userInfoString, workInOutString);
         }
     }
+
+
 }
 

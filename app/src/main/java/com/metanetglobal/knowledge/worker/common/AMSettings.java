@@ -24,7 +24,7 @@ public class AMSettings {
     //public static final String real_baseUrl = "https://am.pulmuone.com/";
     public static final String baseUrl = dev_baseUrl;
     //public static final String baseUrl = dev_baseUrl;
-    public static final String APP_DOWN_URL = baseUrl + "json/";
+    public static final String APP_DOWN_URL = baseUrl;
 
     public static final int RELOGIN_RETRY_COUNT = 3;
 

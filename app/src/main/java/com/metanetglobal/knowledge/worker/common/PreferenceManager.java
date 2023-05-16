@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 
 import com.github.ajalt.timberkt.Timber;
 
-import static io.fabric.sdk.android.Fabric.TAG;
+//import static io.fabric.sdk.android.Fabric.TAG;
 
 /**
  * SharedPreference Manager
@@ -25,7 +25,7 @@ public class PreferenceManager {
             SharedPreferences sp = context.getSharedPreferences(AMSettings.PREFS_INFO, 0);
             SharedPreferences.Editor editor = sp.edit();
             editor.putString("USER_ID", Utils.AES_Encode(id, AMSettings.SKEY));
-            Timber.tag(TAG).d("doAuthentication]"+id+"///"+ Utils.AES_Encode(id, AMSettings.SKEY));
+        //    Timber.tag(TAG).d("doAuthentication]"+id+"///"+ Utils.AES_Encode(id, AMSettings.SKEY));
             editor.commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -63,7 +63,7 @@ public class PreferenceManager {
         try {
             SharedPreferences sp = context.getSharedPreferences(AMSettings.PREFS_INFO, 0);
             SharedPreferences.Editor editor = sp.edit();
-            Timber.tag(TAG).d("doAuthentication]"+pwd+"///");
+         //   Timber.tag(TAG).d("doAuthentication]"+pwd+"///");
             editor.putString("USER_PWD", Utils.AES_Encode(pwd, AMSettings.SKEY));
             editor.commit();
         } catch (Exception e) {
