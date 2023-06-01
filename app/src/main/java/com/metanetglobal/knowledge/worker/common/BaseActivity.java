@@ -3,6 +3,8 @@ package com.metanetglobal.knowledge.worker.common;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
+
 import androidx.annotation.AnimRes;
 import androidx.annotation.IdRes;
 import androidx.annotation.Nullable;

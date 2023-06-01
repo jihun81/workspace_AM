@@ -21,6 +21,7 @@ public class AMSettings {
     public static boolean useOnOffWork = true;
 
     public static final String dev_baseUrl = "http://10.245.18.36:3000/";
+    //public static final String dev_baseUrl = "http://10.245.18.240:3000/";
     //public static final String real_baseUrl = "https://am.pulmuone.com/";
     public static final String baseUrl = dev_baseUrl;
     //public static final String baseUrl = dev_baseUrl;

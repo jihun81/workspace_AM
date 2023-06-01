@@ -66,23 +66,22 @@ public class MyService extends Service {
     //서비스가 종료될 때 할 작업
     public void onDestroy() {
         myServiceHandler handler = new myServiceHandler();
-        Log.d("test","~~~~~~~~~~02~~~~~~~~");
         //thread.stopForever();
-        thread = new ServiceThread( this );
-        thread.start();
+/*        thread = new ServiceThread( this );
+        thread.start();*/
     }
 
     public void start() {
         myServiceHandler handler = new myServiceHandler();
-        thread = new ServiceThread( this );
-        thread.start();
+/*        thread = new ServiceThread( this );
+        thread.start();*/
     }
 
     public void stop() {
         myServiceHandler handler = new myServiceHandler();
         Log.d("test","~~~~~~~~~~03~~~~~~~~");
      //   thread = new ServiceThread( this );
-        thread.stopForever();
+    //    thread.stopForever();
     }
 
     public String test(){

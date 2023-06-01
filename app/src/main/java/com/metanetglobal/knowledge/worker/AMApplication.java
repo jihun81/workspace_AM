@@ -1,9 +1,10 @@
 package com.metanetglobal.knowledge.worker;
 
-import android.app.Activity;
-import android.app.Application;
 
-import com.crashlytics.android.Crashlytics;
+import android.app.Application;
+import android.app.Activity;
+
+//import com.crashlytics.android.Crashlytics;
 import com.metanetglobal.knowledge.worker.common.AMSettings;
 import com.github.ajalt.timberkt.Timber;
 

@@ -9,7 +9,7 @@
     <string name="update_popup_message">앱 업데이트가 가능합니다.\n업데이트 하시겠습니까?</string>
     <string name="error_message_default_network_error">네트워크 오류입니다. 잠시후에 접속하시기 바랍니다.</string>
 
-    <string name="login_id_edt_hint_not_focused">아이디(사번)를 입력하세요.</string>
+    <string name="login_id_edt_hint_not_focused">아이디(이름)를 입력하세요.</string>
     <string name="login_id_edt_hint_focused">아이디</string>
 
     <string name="login_pwd_edt_hint_not_focused">비밀번호를 입력하세요.</string>
@@ -58,4 +58,5 @@
     <string name="schedule_save_complete_message">등록 되었습니다.</string>
 
     <string name="work_inout_list">출퇴근 조회</string>
+    <string name="default_notification_channel_id">channel_01</string>
 </resources>

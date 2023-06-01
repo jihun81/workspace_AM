@@ -17,6 +17,6 @@ import retrofit2.http.POST;
  * @see         LogoutResponseDTO
  */
 public interface LogoutApiInterface {
-    @POST("activityManager/api/common/logout.do")
+    @POST("api/logout")
     Call<LogoutResponseDTO> doLogout(@Body LogoutRequestDTO dto);
 }

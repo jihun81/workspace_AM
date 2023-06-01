@@ -2,14 +2,23 @@ package com.metanetglobal.knowledge.worker.main;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.WindowManager;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.metanetglobal.knowledge.worker.R;
 import com.metanetglobal.knowledge.worker.common.BaseActivity;
 import com.github.ajalt.timberkt.Timber;
+import com.metanetglobal.knowledge.worker.intro.IntroActivity;
 import com.metanetglobal.knowledge.worker.main.otto_interfaces.Event_UpdateUserInfo;
 import com.metanetglobal.knowledge.worker.service.MyService;
 import com.squareup.otto.Subscribe;
@@ -43,10 +52,11 @@ public class MainActivity extends BaseActivity {
         Timber.tag(TAG).i("onCreate");
 
         // 앱 실행시 Background Service 실행
-        Intent serviceintent = new Intent( MainActivity.this, MyService.class );
-        startService( serviceintent );
+      //  Intent serviceintent = new Intent( MainActivity.this, MyService.class );
+       // startService( serviceintent );
 
         //stopService( serviceintent );
+
 
 
         /**
@@ -82,6 +92,7 @@ public class MainActivity extends BaseActivity {
         super.onSaveInstanceState(outState);
     }
 
+
     /**
      * OTTO Event 발생시 회원정보를 업데이트 해준다.
      *
@@ -91,6 +102,9 @@ public class MainActivity extends BaseActivity {
     public void getUpdateUserInfoEvent(Event_UpdateUserInfo event) {
         userInfoString = event.getUserInfo();
         workInOutString = event.getWorkInOutList();
+
+
+
 
         if(getCurrentFragment() != null && getCurrentFragment() instanceof MainFragment) {
             ((MainFragment) getCurrentFragment()).refreshUserInfo(userInfoString, workInOutString);

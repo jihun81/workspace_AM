@@ -7,10 +7,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+
 import androidx.annotation.Nullable;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -36,8 +39,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
-import androidx.fragment.app.FragmentActivity;
 
 /**
  * Intro Fragment
@@ -110,14 +111,20 @@ public class IntroFragment extends BaseFragment {
         super.onActivityCreated(savedInstanceState);
 
         Timber.tag(TAG).i("onActivityCreated");
-
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 getVersion();
             }
         }, 2000);
+
+
+
     }
+
+
+
+
 
     /**
      * Main 으로 이동

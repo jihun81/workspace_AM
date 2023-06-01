@@ -24,6 +24,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,8 @@ import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.metanetglobal.knowledge.worker.R;
@@ -60,6 +63,9 @@ import com.metanetglobal.knowledge.worker.common.Utils;
 import com.metanetglobal.knowledge.worker.main.bean.AddWorkInOutRequestDTO;
 import com.metanetglobal.knowledge.worker.main.bean.AddWorkInOutResponseDTO;
 import com.github.ajalt.timberkt.Timber;
+import com.metanetglobal.knowledge.worker.main.bean.PushRequestDTO;
+import com.metanetglobal.knowledge.worker.main.bean.PushResponseDTO;
+import com.metanetglobal.knowledge.worker.service.MyService;
 
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Type;
@@ -191,7 +197,33 @@ public class MainFragment extends BaseFragment {
         bundle.putString("USER_INFO", userInfo);
         bundle.putString("WORK_IN_OUT", workInOut);
         fragment.setArguments(bundle);
+
         return fragment;
+    }
+
+
+    public void getTokens(){
+
+
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w(TAG, "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+
+                        // Get new FCM registration token
+                        String token = task.getResult();
+
+                        // Log and toast
+                        String msg = token;
+                        Log.d(TAG, "getTokens():"+msg);
+                        pushTokenSave(msg);
+                        //  Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     /**
@@ -316,8 +348,8 @@ public class MainFragment extends BaseFragment {
                         setCanClickable();
 
                         WORK_MODE = WORK_MODE_IN;
-                    //    doCurrentLocation();
-                        addWorkInOut();
+                        doCurrentLocation();
+                    //    addWorkInOut();
                     }
                 }
             });
@@ -332,8 +364,8 @@ public class MainFragment extends BaseFragment {
                         setCanClickable();
 
                         WORK_MODE = WORK_MODE_OUT;
-                        addWorkInOut();
-                      //  doCurrentLocation();
+                      //  addWorkInOut();
+                        doCurrentLocation();
                     }
                 }
             });
@@ -356,6 +388,10 @@ public class MainFragment extends BaseFragment {
         super.onActivityCreated(savedInstanceState);
 
         Timber.tag(TAG).i("onActivityCreated");
+
+
+        FirebaseApp.initializeApp(getContext());
+        getTokens();
 
         setLayoutFromData();
 
@@ -665,6 +701,8 @@ public class MainFragment extends BaseFragment {
         LogoutApiInterface logoutInterface = logoutRestClient.getClient(LogoutApiInterface.class);
 
         Call<LogoutResponseDTO> call = logoutInterface.doLogout(requestDTO);
+
+
         call.enqueue(new Callback<LogoutResponseDTO>() {
             @Override
             public void onResponse(Call<LogoutResponseDTO> call, Response<LogoutResponseDTO> response) {
@@ -941,7 +979,8 @@ public class MainFragment extends BaseFragment {
         LocationRequest mLocationRequest = new LocationRequest();
         mLocationRequest.setInterval(UPDATE_INTERVAL_IN_MILLISECONDS);
         mLocationRequest.setFastestInterval(FASTEST_UPDATE_INTERVAL_IN_MILLISECONDS);
-        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_LOW_POWER);
+        //mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         mLocationRequest.setMaxWaitTime(EXPIRED_LOCATION_MILLISECONDS);
         return mLocationRequest;
     }
@@ -981,7 +1020,7 @@ public class MainFragment extends BaseFragment {
                         initCurrentLocation();
                     }
 
-                    //addWorkInOut();
+                    addWorkInOut();
 
                     // 한번만 위치 가져온다.
                     stopLocationUpdates();
@@ -1023,7 +1062,7 @@ public class MainFragment extends BaseFragment {
                 Timber.tag(TAG).e("[startLocationUpdates] PlayService is not usable~");
                 initCurrentLocation();
                 mRequestingLocationUpdates = false;
-               // addWorkInOut();
+                addWorkInOut();
 
                 return;
             }
@@ -1033,7 +1072,7 @@ public class MainFragment extends BaseFragment {
                 Timber.tag(TAG).e("[startLocationUpdates] GPS Provider is not usable");
                 initCurrentLocation();
                 mRequestingLocationUpdates = false;
-             //   addWorkInOut();
+                addWorkInOut();
             } else {
                 Timber.tag(TAG).d("[startLocationUpdates] Request Location Updates!!!");
                 showLoadingProgressBar();
@@ -1103,5 +1142,56 @@ public class MainFragment extends BaseFragment {
             return false;
         }
         return true;
+    }
+
+
+    private void pushTokenSave(String token) {
+        showLoadingProgressBar();
+        Timber.tag(TAG).d("[pushTokenSave] REQUEST : //");
+        PushRequestDTO requestDTO = new PushRequestDTO();
+
+        String empNO  = PreferenceManager.getUserCode(getActivity());
+
+        requestDTO.setEmpNo(empNO);
+        requestDTO.setToken(token);
+//        requestDTO.setEmpNo(AMSettings.EMPNO);
+
+        Timber.tag(TAG).d("[PushInterface] REQUEST : " + Utils.convertObjToJSON(requestDTO));
+
+        DefaultRestClient<PushInterface> workInOutRestClient = new DefaultRestClient<>();
+        PushInterface pushInterface = workInOutRestClient.getClient(PushInterface.class);
+
+        Call<PushResponseDTO> call = pushInterface.pushTokenSave(requestDTO);
+
+        call.enqueue(new Callback<PushResponseDTO>() {
+            @Override
+            public void onResponse(Call<PushResponseDTO> call, Response<PushResponseDTO> response) {
+                if (response.isSuccessful()) {
+                    // 성공
+                    PushResponseDTO responseDTO = response.body();
+
+                    if (responseDTO != null) {
+                        Timber.tag(TAG).d("[PushRequestDTO] RESPONSE : " + Utils.convertObjToJSON(responseDTO));
+
+                        if (responseDTO.isSuccess()) {
+                            hideLoadingProgressBar();
+
+                        }
+
+
+                    }
+
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PushResponseDTO> call, Throwable t) {
+                Timber.tag(TAG).e("[addWorkInOut][FAIL] message : " + t.getMessage());
+                hideLoadingProgressBar();
+                DialogHelper.showNormalAlertDialog(getActivity(), "");
+
+            }
+        });
     }
 }
