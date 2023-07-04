@@ -1,0 +1,76 @@
+{
+  "project_info": {
+    "project_number": "386175164992",
+    "project_id": "fcmpush-a0568",
+    "storage_bucket": "fcmpush-a0568.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:386175164992:android:23edecf7d925e79bbc75a5",
+        "android_client_info": {
+          "package_name": "com.metanetglobal.knowledge.worker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "386175164992-q9m7d0uq06ql8la1m2d1hefbiq5ip57b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkPNasbrLlcutjWXp5JVDfKT7xftiLiUE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "386175164992-q9m7d0uq06ql8la1m2d1hefbiq5ip57b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:386175164992:android:47f943776881f6a8bc75a5",
+        "android_client_info": {
+          "package_name": "com.pulmuone.foodmerce.test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "386175164992-c6lpbt1vjjtr9ck8na7ppofv5487cosj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pulmuone.foodmerce.test",
+            "certificate_hash": "e9bc2e551b075a0b26b7d30d1b693ca520c2d1cd"
+          }
+        },
+        {
+          "client_id": "386175164992-q9m7d0uq06ql8la1m2d1hefbiq5ip57b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkPNasbrLlcutjWXp5JVDfKT7xftiLiUE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "386175164992-q9m7d0uq06ql8la1m2d1hefbiq5ip57b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
